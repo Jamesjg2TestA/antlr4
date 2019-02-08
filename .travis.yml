@@ -8,8 +8,10 @@ cache:
   - $HOME/Library/Caches/Antlr4
   - $HOME/Library/Caches/Homebrew
   - $HOME/CACHE
+  - $HOME/CACHE
   timeout: 600
 env:
+- CACHE_MARK=1
 - CACHE_MARK=1
 language: java
 matrix:
@@ -19,11 +21,15 @@ matrix:
     - TARGET=cpp
     - GROUP=LEXER
     - CACHE_MARK=2
+    - CACHE_MARK=2
     os: osx
     osx_image: xcode10.1
     script:
     - touch /tmp/NOW;echo SCRIPT_START $(date)
+    - touch /tmp/NOW;echo SCRIPT_START $(date)
     - mvn test -B
+    - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
+      -name TEST-*.xml -newer /tmp/NOW | wc -l))
     - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
       -name TEST-*.xml -newer /tmp/NOW | wc -l))
     stage: extended-test
@@ -32,11 +38,15 @@ matrix:
     - TARGET=cpp
     - GROUP=PARSER
     - CACHE_MARK=3
+    - CACHE_MARK=3
     os: osx
     osx_image: xcode10.1
     script:
     - touch /tmp/NOW;echo SCRIPT_START $(date)
+    - touch /tmp/NOW;echo SCRIPT_START $(date)
     - mvn test -B
+    - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
+      -name TEST-*.xml -newer /tmp/NOW | wc -l))
     - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
       -name TEST-*.xml -newer /tmp/NOW | wc -l))
     stage: extended-test
@@ -45,11 +55,15 @@ matrix:
     - TARGET=cpp
     - GROUP=RECURSION
     - CACHE_MARK=4
+    - CACHE_MARK=4
     os: osx
     osx_image: xcode10.1
     script:
     - touch /tmp/NOW;echo SCRIPT_START $(date)
+    - touch /tmp/NOW;echo SCRIPT_START $(date)
     - mvn test -B
+    - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
+      -name TEST-*.xml -newer /tmp/NOW | wc -l))
     - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
       -name TEST-*.xml -newer /tmp/NOW | wc -l))
     stage: extended-test
@@ -58,11 +72,15 @@ matrix:
     - TARGET=swift
     - GROUP=LEXER
     - CACHE_MARK=5
+    - CACHE_MARK=5
     os: osx
     osx_image: xcode10.1
     script:
     - touch /tmp/NOW;echo SCRIPT_START $(date)
+    - touch /tmp/NOW;echo SCRIPT_START $(date)
     - mvn test -B
+    - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
+      -name TEST-*.xml -newer /tmp/NOW | wc -l))
     - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
       -name TEST-*.xml -newer /tmp/NOW | wc -l))
     stage: main-test
@@ -71,11 +89,15 @@ matrix:
     - TARGET=swift
     - GROUP=PARSER
     - CACHE_MARK=6
+    - CACHE_MARK=6
     os: osx
     osx_image: xcode10.1
     script:
     - touch /tmp/NOW;echo SCRIPT_START $(date)
+    - touch /tmp/NOW;echo SCRIPT_START $(date)
     - mvn test -B
+    - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
+      -name TEST-*.xml -newer /tmp/NOW | wc -l))
     - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
       -name TEST-*.xml -newer /tmp/NOW | wc -l))
     stage: main-test
@@ -84,11 +106,15 @@ matrix:
     - TARGET=swift
     - GROUP=RECURSION
     - CACHE_MARK=7
+    - CACHE_MARK=7
     os: osx
     osx_image: xcode10.1
     script:
     - touch /tmp/NOW;echo SCRIPT_START $(date)
+    - touch /tmp/NOW;echo SCRIPT_START $(date)
     - mvn test -B
+    - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
+      -name TEST-*.xml -newer /tmp/NOW | wc -l))
     - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
       -name TEST-*.xml -newer /tmp/NOW | wc -l))
     stage: main-test
@@ -98,10 +124,14 @@ matrix:
     - TARGET=swift
     - GROUP=ALL
     - CACHE_MARK=8
+    - CACHE_MARK=8
     os: linux
     script:
     - touch /tmp/NOW;echo SCRIPT_START $(date)
+    - touch /tmp/NOW;echo SCRIPT_START $(date)
     - mvn test -B
+    - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
+      -name TEST-*.xml -newer /tmp/NOW | wc -l))
     - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
       -name TEST-*.xml -newer /tmp/NOW | wc -l))
     stage: extended-test
@@ -109,11 +139,15 @@ matrix:
     - TARGET=dotnet
     - GROUP=LEXER
     - CACHE_MARK=9
+    - CACHE_MARK=9
     os: osx
     osx_image: xcode10.1
     script:
     - touch /tmp/NOW;echo SCRIPT_START $(date)
+    - touch /tmp/NOW;echo SCRIPT_START $(date)
     - mvn test -B
+    - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
+      -name TEST-*.xml -newer /tmp/NOW | wc -l))
     - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
       -name TEST-*.xml -newer /tmp/NOW | wc -l))
     stage: extended-test
@@ -121,11 +155,15 @@ matrix:
     - TARGET=dotnet
     - GROUP=PARSER
     - CACHE_MARK=10
+    - CACHE_MARK=10
     os: osx
     osx_image: xcode10.1
     script:
     - touch /tmp/NOW;echo SCRIPT_START $(date)
+    - touch /tmp/NOW;echo SCRIPT_START $(date)
     - mvn test -B
+    - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
+      -name TEST-*.xml -newer /tmp/NOW | wc -l))
     - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
       -name TEST-*.xml -newer /tmp/NOW | wc -l))
     stage: extended-test
@@ -133,31 +171,43 @@ matrix:
     - TARGET=dotnet
     - GROUP=RECURSION
     - CACHE_MARK=11
+    - CACHE_MARK=11
     os: osx
     osx_image: xcode10.1
     script:
     - touch /tmp/NOW;echo SCRIPT_START $(date)
+    - touch /tmp/NOW;echo SCRIPT_START $(date)
     - mvn test -B
+    - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
+      -name TEST-*.xml -newer /tmp/NOW | wc -l))
     - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
       -name TEST-*.xml -newer /tmp/NOW | wc -l))
     stage: extended-test
   - env:
     - TARGET=java
+    - CACHE_MARK=12
     jdk: openjdk8
     os: linux
     script:
     - touch /tmp/NOW;echo SCRIPT_START $(date)
+    - touch /tmp/NOW;echo SCRIPT_START $(date)
     - mvn test -B
+    - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
+      -name TEST-*.xml -newer /tmp/NOW | wc -l))
     - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
       -name TEST-*.xml -newer /tmp/NOW | wc -l))
     stage: extended-test
   - env:
     - TARGET=java
+    - CACHE_MARK=13
     jdk: oraclejdk8
     os: linux
     script:
     - touch /tmp/NOW;echo SCRIPT_START $(date)
+    - touch /tmp/NOW;echo SCRIPT_START $(date)
     - mvn test -B
+    - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
+      -name TEST-*.xml -newer /tmp/NOW | wc -l))
     - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
       -name TEST-*.xml -newer /tmp/NOW | wc -l))
     stage: smoke-test
@@ -166,11 +216,15 @@ matrix:
     - TARGET=dotnet
     - GROUP=LEXER
     - CACHE_MARK=14
+    - CACHE_MARK=14
     jdk: oraclejdk8
     os: linux
     script:
     - touch /tmp/NOW;echo SCRIPT_START $(date)
+    - touch /tmp/NOW;echo SCRIPT_START $(date)
     - mvn test -B
+    - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
+      -name TEST-*.xml -newer /tmp/NOW | wc -l))
     - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
       -name TEST-*.xml -newer /tmp/NOW | wc -l))
     stage: extended-test
@@ -179,11 +233,15 @@ matrix:
     - TARGET=dotnet
     - GROUP=PARSER
     - CACHE_MARK=15
+    - CACHE_MARK=15
     jdk: openjdk8
     os: linux
     script:
     - touch /tmp/NOW;echo SCRIPT_START $(date)
+    - touch /tmp/NOW;echo SCRIPT_START $(date)
     - mvn test -B
+    - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
+      -name TEST-*.xml -newer /tmp/NOW | wc -l))
     - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
       -name TEST-*.xml -newer /tmp/NOW | wc -l))
     stage: extended-test
@@ -192,37 +250,50 @@ matrix:
     - TARGET=dotnet
     - GROUP=RECURSION
     - CACHE_MARK=16
+    - CACHE_MARK=16
     jdk: oraclejdk8
     os: linux
     script:
     - touch /tmp/NOW;echo SCRIPT_START $(date)
+    - touch /tmp/NOW;echo SCRIPT_START $(date)
     - mvn test -B
+    - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
+      -name TEST-*.xml -newer /tmp/NOW | wc -l))
     - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
       -name TEST-*.xml -newer /tmp/NOW | wc -l))
     stage: extended-test
   - dist: trusty
     env:
     - TARGET=javascript
+    - CACHE_MARK=17
     jdk: openjdk8
     os: linux
     script:
     - touch /tmp/NOW;echo SCRIPT_START $(date)
+    - touch /tmp/NOW;echo SCRIPT_START $(date)
     - mvn test -B
+    - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
+      -name TEST-*.xml -newer /tmp/NOW | wc -l))
     - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
       -name TEST-*.xml -newer /tmp/NOW | wc -l))
     stage: main-test
   - dist: trusty
     env:
     - TARGET=go
+    - CACHE_MARK=18
     jdk: openjdk8
     os: linux
     script:
     - touch /tmp/NOW;echo SCRIPT_START $(date)
+    - touch /tmp/NOW;echo SCRIPT_START $(date)
     - mvn test -B
+    - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
+      -name TEST-*.xml -newer /tmp/NOW | wc -l))
     - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
       -name TEST-*.xml -newer /tmp/NOW | wc -l))
     stage: main-test
 script:
+- touch /tmp/NOW;echo SCRIPT_START $(date)
 - touch /tmp/NOW;echo SCRIPT_START $(date)
 - 'cd runtime-testsuite;
 
@@ -235,6 +306,8 @@ script:
   exit $rc
 
   '
+- echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
+  -name TEST-*.xml -newer /tmp/NOW | wc -l))
 - echo SCRIPT_END $(date);echo TESTNUM $(grep -l "<testcase" $(find $TRAVIS_BUILD_DIR
   -name TEST-*.xml -newer /tmp/NOW | wc -l))
 stages:
